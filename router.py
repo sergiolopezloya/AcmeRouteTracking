@@ -106,19 +106,41 @@ def main():
 
     print("Total Suitability Score:", total_ss)
     print("Matching:")
-    for index, (destination, driver) in enumerate(matching.items(), start=1):
-        suitability_score = calculate_suitability(destination, driver)
-        explanation = ""
+    assigned_drivers = set()  # To keep track of assigned drivers
 
-        if len(destination) % 2 == 0:
-            explanation = f"Vowel-based suitability (even length): {count_vowels(driver)} vowels * 1.5"
-        else:
-            explanation = f"Consonant-based suitability (odd length): {count_consonants(driver)} consonants"
+    for index, destination in enumerate(destinations, start=1):
+        max_ss = 0
+        assigned_driver = None
 
-        if common_factors(len(destination), len(driver)):
-            explanation += " with common factors bonus (1.5x)"
+        for driver in drivers:
+            if driver in assigned_drivers:
+                continue  # Skip already assigned drivers
 
-        print(f"{index}. {destination} -> {driver} ({explanation})")
+            driver_suitability_score = calculate_suitability(destination, driver)
+            if driver_suitability_score > max_ss:
+                max_ss = driver_suitability_score
+                assigned_driver = driver
+
+        if assigned_driver:
+            matching[destination] = assigned_driver
+            assigned_drivers.add(assigned_driver)
+            explanation = ""
+
+            if len(destination) % 2 == 0:
+                explanation = (
+                    f"Vowel-based suitability (even length): "
+                    f"{count_vowels(assigned_driver)} vowels * 1.5"
+                )
+            else:
+                explanation = (
+                    f"Consonant-based suitability (odd length): "
+                    f"{count_consonants(assigned_driver)} consonants"
+                )
+
+            if common_factors(len(destination), len(assigned_driver)):
+                explanation += " with common factors bonus (1.5x)"
+
+            print(f"{index}. {destination} -> {assigned_driver} ({explanation})")
 
 if __name__ == "__main__":
     main()
