@@ -9,31 +9,31 @@ def calculate_suitability(destination, driver):
     Returns:
         float: The suitability score for the assignment.
     """
-    def count_vowels(s):
+    def count_vowels(string_counted):
         """
         Count the number of vowels in a string.
 
         Args:
-            s (str): The input string.
+            string_counted (str): The input string.
 
         Returns:
             int: The count of vowels in the string.
         """
         vowels = "AEIOUaeiou"
-        return sum(1 for char in s if char in vowels)
+        return sum(1 for char in string_counted if char in vowels)
 
-    def count_consonants(s):
+    def count_consonants(string_counted):
         """
         Count the number of consonants in a string.
 
         Args:
-            s (str): The input string.
+            string_counted (str): The input string.
 
         Returns:
             int: The count of consonants in the string.
         """
         consonants = "BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz"
-        return sum(1 for char in s if char in consonants)
+        return sum(1 for char in string_counted if char in consonants)
 
     dest_length = len(destination)
     driver_length = len(driver)
