@@ -1,9 +1,37 @@
 def calculate_suitability(destination, driver):
+    """
+    Calculate the suitability score for assigning a driver to a shipment destination.
+
+    Args:
+        destination (str): The shipment's destination street name.
+        driver (str): The driver's name.
+
+    Returns:
+        float: The suitability score for the assignment.
+    """
     def count_vowels(s):
+        """
+        Count the number of vowels in a string.
+
+        Args:
+            s (str): The input string.
+
+        Returns:
+            int: The count of vowels in the string.
+        """
         vowels = "AEIOUaeiou"
         return sum(1 for char in s if char in vowels)
 
     def count_consonants(s):
+        """
+        Count the number of consonants in a string.
+
+        Args:
+            s (str): The input string.
+
+        Returns:
+            int: The count of consonants in the string.
+        """
         consonants = "BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz"
         return sum(1 for char in s if char in consonants)
 
@@ -26,7 +54,6 @@ def calculate_suitability(destination, driver):
         suitability_score *= 1.5
 
     return suitability_score
-
 
 def assign_shipments_to_drivers(destinations, drivers):
     total_ss = 0
