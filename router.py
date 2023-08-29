@@ -10,22 +10,23 @@ def calculate_suitability(destination, driver):
     dest_length = len(destination)
     driver_length = len(driver)
 
-    base_ss = 0
+    base_suitability_score = 0
     if dest_length % 2 == 0:
-        base_ss = count_vowels(driver) * 1.5
+        base_suitability_score = count_vowels(driver) * 1.5
     else:
-        base_ss = count_consonants(driver)
+        base_suitability_score = count_consonants(driver)
 
     common_factors = set()
     for i in range(2, min(dest_length, driver_length) + 1):
         if dest_length % i == 0 and driver_length % i == 0:
             common_factors.add(i)
 
-    ss = base_ss
+    suitability_score = base_suitability_score
     if common_factors:
-        ss *= 1.5
+        suitability_score *= 1.5
 
-    return ss
+    return suitability_score
+
 
 def assign_shipments_to_drivers(destinations, drivers):
     total_ss = 0
