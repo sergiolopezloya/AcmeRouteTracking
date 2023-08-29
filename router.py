@@ -1,3 +1,36 @@
+suitability_score = 0
+def common_factors(dest_length, driver_length):
+    for i in range(2, min(dest_length, driver_length) + 1):
+        if dest_length % i == 0 and driver_length % i == 0:
+            return True
+    return False
+
+def count_vowels(string_counted):
+    """
+    Count the number of vowels in a string.
+
+    Args:
+        string_counted (str): The input string.
+
+    Returns:
+        int: The count of vowels in the string.
+    """
+    vowels = "AEIOUaeiou"
+    return sum(1 for char in string_counted if char in vowels)
+
+def count_consonants(string_counted):
+    """
+    Count the number of consonants in a string.
+
+    Args:
+        string_counted (str): The input string.
+
+    Returns:
+        int: The count of consonants in the string.
+    """
+    consonants = "BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz"
+    return sum(1 for char in string_counted if char in consonants)
+
 def calculate_suitability(destination, driver):
     """
     Calculate the suitability score for assigning a driver to a shipment destination.
@@ -9,32 +42,6 @@ def calculate_suitability(destination, driver):
     Returns:
         float: The suitability score for the assignment.
     """
-    def count_vowels(string_counted):
-        """
-        Count the number of vowels in a string.
-
-        Args:
-            string_counted (str): The input string.
-
-        Returns:
-            int: The count of vowels in the string.
-        """
-        vowels = "AEIOUaeiou"
-        return sum(1 for char in string_counted if char in vowels)
-
-    def count_consonants(string_counted):
-        """
-        Count the number of consonants in a string.
-
-        Args:
-            string_counted (str): The input string.
-
-        Returns:
-            int: The count of consonants in the string.
-        """
-        consonants = "BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz"
-        return sum(1 for char in string_counted if char in consonants)
-
     dest_length = len(destination)
     driver_length = len(driver)
 
@@ -44,13 +51,8 @@ def calculate_suitability(destination, driver):
     else:
         base_suitability_score = count_consonants(driver)
 
-    common_factors = set()
-    for i in range(2, min(dest_length, driver_length) + 1):
-        if dest_length % i == 0 and driver_length % i == 0:
-            common_factors.add(i)
-
     suitability_score = base_suitability_score
-    if common_factors:
+    if common_factors(dest_length, driver_length):
         suitability_score *= 1.5
 
     return suitability_score
@@ -95,7 +97,6 @@ def main():
     and prints the results.
 
     """
-    # Read input files, call functions, and print results
     with open('destinations.txt', 'r', encoding='utf-8') as dest_file, \
           open('drivers.txt', 'r', encoding='utf-8') as driver_file:
         destinations = dest_file.read().splitlines()
@@ -105,8 +106,19 @@ def main():
 
     print("Total Suitability Score:", total_ss)
     print("Matching:")
-    for destination, driver in matching.items():
-        print(f"{destination} -> {driver}")
+    for index, (destination, driver) in enumerate(matching.items(), start=1):
+        suitability_score = calculate_suitability(destination, driver)
+        explanation = ""
+
+        if len(destination) % 2 == 0:
+            explanation = f"Vowel-based suitability (even length): {count_vowels(driver)} vowels * 1.5"
+        else:
+            explanation = f"Consonant-based suitability (odd length): {count_consonants(driver)} consonants"
+
+        if common_factors(len(destination), len(driver)):
+            explanation += " with common factors bonus (1.5x)"
+
+        print(f"{index}. {destination} -> {driver} ({explanation})")
 
 if __name__ == "__main__":
     main()
