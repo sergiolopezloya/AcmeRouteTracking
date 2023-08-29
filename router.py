@@ -56,6 +56,17 @@ def calculate_suitability(destination, driver):
     return suitability_score
 
 def assign_shipments_to_drivers(destinations, drivers):
+    """
+    Assign shipment destinations to drivers to maximize total suitability score.
+
+    Args:
+        destinations (list): List of shipment destination street names.
+        drivers (list): List of driver names.
+
+    Returns:
+        tuple: A tuple containing the total suitability score and a dictionary
+               matching shipment destinations to drivers.
+    """
     total_ss = 0
     matching = {}
 
@@ -76,7 +87,17 @@ def assign_shipments_to_drivers(destinations, drivers):
     return total_ss, matching
 
 def main():
-    with open('destinations.txt', 'r') as dest_file, open('drivers.txt', 'r') as driver_file:
+    """
+    Main function to run the shipment assignment program.
+
+    Reads shipment destinations and driver names from input files,
+    assigns shipments to drivers based on suitability scores,
+    and prints the results.
+
+    """
+    # Read input files, call functions, and print results
+    with open('destinations.txt', 'r', encoding='utf-8') as dest_file, \
+          open('drivers.txt', 'r', encoding='utf-8') as driver_file:
         destinations = dest_file.read().splitlines()
         drivers = driver_file.read().splitlines()
 
