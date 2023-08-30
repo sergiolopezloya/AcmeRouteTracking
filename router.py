@@ -112,6 +112,8 @@ def main():
         destinations = dest_file.read().splitlines()
         drivers = driver_file.read().splitlines()
 
+    include_explanation = input("Do you want to include explanations? (Y/n): ").lower() or 'y'
+
     total_ss, matching = assign_shipments_to_drivers(destinations, drivers)
 
     print("Total Suitability Score:", total_ss)
@@ -136,21 +138,24 @@ def main():
             assigned_drivers.add(assigned_driver)
             explanation = ""
 
-            if len(destination) % 2 == 0:
-                explanation = (
-                    f"Vowel-based suitability (even length): "
-                    f"{count_vowels(assigned_driver)} vowels * 1.5"
-                )
-            else:
-                explanation = (
-                    f"Consonant-based suitability (odd length): "
-                    f"{count_consonants(assigned_driver)} consonants"
-                )
+            if include_explanation == 'y':
+              if len(destination) % 2 == 0:
+                  explanation = (
+                      f"Vowel-based suitability (even length): "
+                      f"{count_vowels(assigned_driver)} vowels * 1.5"
+                  )
+              else:
+                  explanation = (
+                      f"Consonant-based suitability (odd length): "
+                      f"{count_consonants(assigned_driver)} consonants"
+                  )
 
-            if common_factors(len(destination), len(assigned_driver)):
-                explanation += " with common factors bonus (1.5x)"
+              if common_factors(len(destination), len(assigned_driver)):
+                  explanation += " with common factors bonus (1.5x)"
+              
+              explanation = f"({explanation})"
 
-            print(f"{index}. {destination} -> {assigned_driver} ({explanation})")
+            print(f"{index}. {destination} -> {assigned_driver} {explanation}")
 
 if __name__ == "__main__":
     main()
