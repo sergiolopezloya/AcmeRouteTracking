@@ -1,3 +1,8 @@
+"""
+count_characters module
+
+This module provides functions to count vowels and consonants in a string.
+"""
 def count_vowels(string_counted):
     """
     Count the number of vowels in a string.

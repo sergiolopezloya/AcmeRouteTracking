@@ -1,3 +1,9 @@
+"""
+assign_shipments_to_drivers module
+
+This module provides a function to assign shipment destinations to drivers based
+on suitability scores.
+"""
 from methods.calculate_suitability import calculate_suitability
 
 

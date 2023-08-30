@@ -1,3 +1,8 @@
+"""
+common_factors module
+
+This module provides a function to check for common factors between two numbers.
+"""
 def common_factors(dest_length, driver_length):
     """
     Check if there are common factors between two numbers.

@@ -1,3 +1,9 @@
+"""
+calculate_suitability module
+
+This module provides a function to calculate the suitability score for assigning a driver
+to a shipment destination.
+"""
 from methods.common_factors import common_factors
 from methods.count_characters import count_consonants, count_vowels
 

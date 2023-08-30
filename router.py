@@ -1,3 +1,12 @@
+"""
+Main Module
+
+This module contains the main function to run the shipment assignment program.
+It reads shipment destinations and driver names from input files,
+assigns shipments to drivers based on suitability scores,
+and prints the results.
+The results can include explanation if requested by the user.
+"""
 from methods.assign_shipments_to_drivers import assign_shipments_to_drivers
 from methods.calculate_suitability import calculate_suitability
 from methods.common_factors import common_factors
