@@ -66,7 +66,7 @@ def main():
 
                 if common_factors(len(destination), len(assigned_driver)):
                     explanation += " with common factors bonus (1.5x)"
-                explanation = f"({explanation})"
+                explanation = f"(Explain: {explanation})"
 
             print(f"{index}. {destination} -> {assigned_driver} {explanation}")
 
