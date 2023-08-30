@@ -12,9 +12,6 @@ from methods.calculate_suitability import calculate_suitability
 from methods.common_factors import common_factors
 from methods.count_characters import count_consonants, count_vowels
 
-
-suitability_score = 0
-
 def main():
     """
     Main function to run the shipment assignment program.
