@@ -1,3 +1,9 @@
+"""
+Test Module for calculate_suitability Method
+
+This module contains test cases for the calculate_suitability method
+in the main program.
+"""
 import unittest
 from methods.calculate_suitability import calculate_suitability, common_factors
 

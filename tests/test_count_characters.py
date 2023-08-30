@@ -1,3 +1,9 @@
+"""
+Test Module for count_characters Methods
+
+This module contains test cases for the count_consonants and count_vowels methods
+in the main program.
+"""
 import unittest
 from methods.count_characters import count_consonants, count_vowels
 

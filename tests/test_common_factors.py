@@ -1,3 +1,9 @@
+"""
+Test Module for common_factors Method
+
+This module contains test cases for the common_factors method
+in the main program.
+"""
 import unittest
 from methods.common_factors import common_factors
 
