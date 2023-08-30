@@ -1,102 +1,10 @@
+from methods.assign_shipments_to_drivers import assign_shipments_to_drivers
+from methods.calculate_suitability import calculate_suitability
+from methods.common_factors import common_factors
+from methods.count_characters import count_consonants, count_vowels
+
+
 suitability_score = 0
-def common_factors(dest_length, driver_length):
-    """
-    Check if there are common factors between two numbers.
-
-    Args:
-        dest_length (int): Length of the destination street name.
-        driver_length (int): Length of the driver's name.
-
-    Returns:
-        bool: True if there are common factors, False otherwise.
-    """
-    for i in range(2, min(dest_length, driver_length) + 1):
-        if dest_length % i == 0 and driver_length % i == 0:
-            return True
-    return False
-
-def count_vowels(string_counted):
-    """
-    Count the number of vowels in a string.
-
-    Args:
-        string_counted (str): The input string.
-
-    Returns:
-        int: The count of vowels in the string.
-    """
-    vowels = "AEIOUaeiou"
-    return sum(1 for char in string_counted if char in vowels)
-
-def count_consonants(string_counted):
-    """
-    Count the number of consonants in a string.
-
-    Args:
-        string_counted (str): The input string.
-
-    Returns:
-        int: The count of consonants in the string.
-    """
-    consonants = "BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz"
-    return sum(1 for char in string_counted if char in consonants)
-
-def calculate_suitability(destination, driver):
-    """
-    Calculate the suitability score for assigning a driver to a shipment destination.
-
-    Args:
-        destination (str): The shipment's destination street name.
-        driver (str): The driver's name.
-
-    Returns:
-        float: The suitability score for the assignment.
-    """
-    dest_length = len(destination)
-    driver_length = len(driver)
-
-    base_suitability_score = 0
-    if dest_length % 2 == 0:
-        base_suitability_score = count_vowels(driver) * 1.5
-    else:
-        base_suitability_score = count_consonants(driver)
-
-    suitability_score = base_suitability_score
-    if common_factors(dest_length, driver_length):
-        suitability_score *= 1.5
-
-    return suitability_score
-
-def assign_shipments_to_drivers(destinations, drivers):
-    """
-    Assign shipment destinations to drivers to maximize total suitability score.
-
-    Args:
-        destinations (list): List of shipment destination street names.
-        drivers (list): List of driver names.
-
-    Returns:
-        tuple: A tuple containing the total suitability score and a dictionary
-               matching shipment destinations to drivers.
-    """
-    total_ss = 0
-    matching = {}
-
-    for destination in destinations:
-        max_ss = 0
-        assigned_driver = None
-
-        for driver in drivers:
-            driver_suitability_score = calculate_suitability(destination, driver)
-            if driver_suitability_score > max_ss and driver not in matching.values():
-                max_ss = driver_suitability_score
-                assigned_driver = driver
-
-        if assigned_driver:
-            matching[destination] = assigned_driver
-            total_ss += max_ss
-
-    return total_ss, matching
 
 def main():
     """
