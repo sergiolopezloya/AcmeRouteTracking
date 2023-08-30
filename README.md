@@ -27,24 +27,26 @@ python3 main.py
 
 ## Project Structure
 
+```
 _AcmeRouteTracking/_
 ├── _methods/_
-│ ├── `__init__.py`
-│ ├── `assign_shipments_to_drivers.py`
-│ ├── `calculate_suitability.py`
-│ ├── `common_factors.py`
-│ ├── `count_characters.py`
+│ ├── __init__.py
+│ ├── assign_shipments_to_drivers.py
+│ ├── calculate_suitability.py
+│ ├── common_factors.py
+│ ├── count_characters.py
 ├── _tests/_
-│ ├── `__init__.py`
-│ ├── `test_assign_shipments_to_drivers.py`
-│ ├── `test_calculate_suitability.py`
-│ ├── `test_common_factors.py`
-│ ├── `test_count_characters.py`
-├── `main.py`
-├── `destinations.txt`
-├── `drivers.txt`
-├── `LICENSE`
-├── `README.md`
+│ ├── __init__.py
+│ ├── test_assign_shipments_to_drivers.py
+│ ├── test_calculate_suitability.py
+│ ├── test_common_factors.py
+│ ├── test_count_characters.py
+├── main.py
+├── destinations.txt
+├── drivers.txt
+├── LICENSE
+├── README.md
+```
 
 ## Running Tests
 
