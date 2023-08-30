@@ -25,6 +25,27 @@ python3 main.py
 4. Follow the prompts to provide input for shipment destinations and driver names.
 5. The program will display the total suitability score and the matching of shipments to drivers.
 
+## Project Structure
+
+_AcmeRouteTracking/_
+├── _methods/_
+│ ├── `__init__.py`
+│ ├── `assign_shipments_to_drivers.py`
+│ ├── `calculate_suitability.py`
+│ ├── `common_factors.py`
+│ ├── `count_characters.py`
+├── _tests/_
+│ ├── `__init__.py`
+│ ├── `test_assign_shipments_to_drivers.py`
+│ ├── `test_calculate_suitability.py`
+│ ├── `test_common_factors.py`
+│ ├── `test_count_characters.py`
+├── `main.py`
+├── `destinations.txt`
+├── `drivers.txt`
+├── `LICENSE`
+├── `README.md`
+
 ## Running Tests
 
 To run the tests, use the following command in your terminal from the root directory of the project:
@@ -36,3 +57,7 @@ python3 -m unittest discover tests
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+- **[Sergio Lopez](https://github.com/sergiolopezloya)** - _Personal project_
