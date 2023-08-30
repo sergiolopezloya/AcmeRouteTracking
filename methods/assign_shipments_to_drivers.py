@@ -21,7 +21,8 @@ def assign_shipments_to_drivers(destinations, drivers):
         assigned_driver = None
 
         for driver in drivers:
-            driver_suitability_score = calculate_suitability(destination, driver)
+            driver_suitability_score = calculate_suitability(
+                destination, driver)
             if driver_suitability_score > max_ss and driver not in matching.values():
                 max_ss = driver_suitability_score
                 assigned_driver = driver
